@@ -3,4 +3,4 @@ name=Tasker Privileged
 version=v1.1
 versionCode=1
 author=Rei Ryuki the Fixer
-description=This module will allow all permissions of Tasker app with system privileged app permissions and change SE Linux to permissive state.
+description=This module will bring back the "Application Services" trigger and the "Set light" action in Tasker app to make it work properly for Android 8 and up.

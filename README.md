@@ -1,9 +1,9 @@
 # **Tasker Privileged**
 
 ## Description
-This module will allow all permissions of Tasker app with system privileged app permissions and change SE Linux to permissive state.
+This module will allow all permissions of Tasker app with system privileged app permissions and change SE Linux to Permissive state.
 
-This will bring back the "Application Services" trigger and the "Set light" action in Tasker to make it work properly for Android 8 and up.
+This will bring back the "Application Services" trigger and the "Set light" action in Tasker app to make it work properly for Android 8 and up.
 
 https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm
 

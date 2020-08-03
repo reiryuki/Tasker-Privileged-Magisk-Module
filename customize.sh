@@ -8,3 +8,12 @@ fi
 
 # remove unused file
 rm -f $MODPATH/LICENSE
+
+# check selinux
+ui_print "- Checking SE Linux state"
+SELINUX=$(getenforce)
+ui_print "- SE Linux is $SELINUX"
+if [ "$SELINUX" == Permissive ]; then
+  ui_print "- Deleting service.sh file"
+  rm -f $MODPATH/service.sh
+fi
