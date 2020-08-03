@@ -23,7 +23,7 @@ V1.1
 - Reboot
 
 ## My Channels
-- Blog: [Rei Ryuki](https://reiryuki.blogspot.com)
-- Github: [reiryuki](https://github.com/reiryuki/MIUI-Libraries-Magisk-Module)
+- Blog: [reiryuki.blogspot.com](https://reiryuki.blogspot.com)
+- Github: [reiryuki](https://github.com/reiryuki/Tasker-Privileged-Magisk-Module)
 - FB: [Android Solutions](https://m.facebook.com/rikiirawan99/?ref=bookmarks)
 - YT: [Rei Ryuki](https://www.youtube.com/channel/UCAZBR3IAu-MSLwGXkZPYxag)
