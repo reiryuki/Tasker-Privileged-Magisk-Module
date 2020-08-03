@@ -1,0 +1,6 @@
+id=TaskerPrivileged
+name=Tasker Privileged
+version=v1.1
+versionCode=1
+author=Rei Ryuki the Fixer
+description=This module will allow all permissions of Tasker app with system privileged app permissions and change SE Linux to permissive state.
