@@ -1,0 +1,1 @@
+# Tasker-Privileged-Magisk-Module
