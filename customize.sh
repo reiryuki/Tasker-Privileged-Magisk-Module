@@ -1,7 +1,6 @@
 # check android
-if [ "$API" -lt 27 ]; then
-  ui_print "- ! Unsupported sdk: $API"
-  abort "- You have to upgrade your Android version at least Oreo sdk API 27 to use this module!"
+if [ "$API" -lt 21 ]; then
+  abort "- ! Unsupported sdk: $API. You have to upgrade your Android version at least ICS sdk API 21 to use this module!"
 else
   ui_print "- Device sdk: $API"
 fi
@@ -9,11 +8,23 @@ fi
 # remove unused file
 rm -f $MODPATH/LICENSE
 
-# check selinux
-ui_print "- Checking SE Linux state"
+# check files
 SELINUX=$(getenforce)
 ui_print "- SE Linux is $SELINUX"
-if [ "$SELINUX" == Permissive ]; then
-  ui_print "- Deleting service.sh file"
-  rm -f $MODPATH/service.sh
+PRIV=$(getprop ro.control_privapp_permissions)
+ui_print "- ro.control_privapp_permissions=$PRIV"
+TEST=$MODPATH/test
+echo $MODPATH > $TEST
+MODPATHM=$(sed 's/_update//g' $TEST)
+rm -f $TEST
+if [ ! -e "$MODPATHM/service.sh" ]; then
+  if [ "$SELINUX" != "Enforcing" ]; then
+    rm -f $MODPATH/service.sh
+  fi
 fi
+if [ ! -e "$MODPATHM/system.prop" ]; then
+  if [ "$PRIV" == "enforce" ] || [ "$PRIV" == "log" ]; then
+    rm -f $MODPATH/system.prop
+  fi
+fi
+
