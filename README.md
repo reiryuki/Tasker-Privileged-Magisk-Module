@@ -3,7 +3,7 @@
 ## Description
 This module will allow all permissions of Tasker app with system privileged app permissions and change SE Linux to Permissive state.
 
-This will bring back the "Application Services" trigger and the "Set Light" action in Tasker app to make it work properly, especially in Android Oreo and up.
+This will bring back the "Application Services" trigger and the "Set Light" action in Tasker app to make it work properly in Android Oreo and up.
 
 https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm
 
@@ -16,7 +16,7 @@ v1.2
 
 ## Requirements
 - Magisk Installed
-- Android ICS and up
+- Android Oreo and up
 - Paid Tasker app installed
 - "Application Services" trigger or "Set Light" action are not working properly in Tasker
 

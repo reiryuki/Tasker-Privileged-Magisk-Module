@@ -1,6 +1,6 @@
 # check android
-if [ "$API" -lt 21 ]; then
-  abort "- ! Unsupported sdk: $API. You have to upgrade your Android version at least ICS sdk API 21 to use this module!"
+if [ "$API" -lt 27 ]; then
+  abort "- ! Unsupported sdk: $API. You have to upgrade your Android version at least Oreo sdk API 27 to use this module!"
 else
   ui_print "- Device sdk: $API"
 fi
@@ -27,4 +27,3 @@ if [ ! -e "$MODPATHM/system.prop" ]; then
     rm -f $MODPATH/system.prop
   fi
 fi
-
