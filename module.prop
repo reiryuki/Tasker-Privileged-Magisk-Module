@@ -1,6 +1,6 @@
 id=TaskerPrivileged
 name=Tasker Privileged
-version=v1.3
-versionCode=3
+version=v1.4
+versionCode=4
 author=Rei Ryuki the Fixer
-description=This module will allow all permissions of Tasker app with system privileged app permissions and change SE Linux to Permissive state to bring back the "Application Services" trigger and the "Set Light" action for Android Oreo and up.
+description=Fix Tasker "Application Services" trigger and "Set Light" actions not working in Android Oreo and up.
