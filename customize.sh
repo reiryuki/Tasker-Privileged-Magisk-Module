@@ -1,12 +1,18 @@
 # check android
-if [ "$API" -lt 27 ]; then
-  abort "- ! Unsupported sdk: $API. You have to upgrade your Android version at least Oreo sdk API 27 to use this module!"
+if [ "$API" -lt 26 ]; then
+  abort "- ! Unsupported sdk: $API. You have to upgrade your Android version at least Oreo sdk API 26 to use this module!"
 else
   ui_print "- Device sdk: $API"
 fi
 
 # remove unused file
 rm -f $MODPATH/LICENSE
+
+# install as user app
+if ! pm list packages | grep -Eq net.dinglisch.android.taskerm; then
+  ui_print "- Installing Tasker as user app and granting all permissions..."
+  pm install -g $MODPATH/system/priv-app/Tasker/Tasker.apk
+fi
 
 # check files
 SELINUX=$(getenforce)

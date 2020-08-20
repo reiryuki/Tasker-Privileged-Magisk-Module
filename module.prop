@@ -1,6 +1,6 @@
 id=TaskerPrivileged
 name=Tasker Privileged
-version=v1.4
-versionCode=4
+version=v1.5
+versionCode=5
 author=Rei Ryuki the Fixer
-description=Fix Tasker "Application Services" trigger and "Set Light" actions not working in Android Oreo and up.
+description=Bring back "Application Services" trigger and "Set Light" actions functionality in Tasker app for Android Oreo and up
