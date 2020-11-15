@@ -4,7 +4,7 @@
 - Fix some missing functionalities of [Tasker app](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm) due to restrictions in newer Android API versions.
 
 ## Requirements
-- Android Oreo SDK 26 and up
+- Android Lollipop SDK 21 and up
 - Paid Tasker installed as user app
 
 ## Instructions
