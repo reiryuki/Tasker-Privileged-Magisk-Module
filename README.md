@@ -6,6 +6,7 @@
 ## Requirements
 - Android Lollipop SDK 21 and up
 - Paid Tasker installed as user app
+- Magisk installed
 
 ## Instructions
 - Install paid Tasker app first at [Play Store](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm)
