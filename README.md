@@ -15,3 +15,6 @@
 
 ## Attention!
 - No report except with full logcats
+
+## Donate
+- https://www.paypal.me/reiryuki
