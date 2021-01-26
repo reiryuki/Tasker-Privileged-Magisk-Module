@@ -17,7 +17,7 @@
 - No report except with full logcats
 
 ## Channel
-- t.me/androidryukimods
+- https://t.me/androidryukimods
 - https://www.facebook.com/groups/taskerandroid/?ref=share
 
 ## Donate
