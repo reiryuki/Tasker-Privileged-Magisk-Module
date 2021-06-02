@@ -16,9 +16,9 @@
 ## Attention!
 - No report except with full logcats
 
-## Channel
+## Channels
 - https://t.me/androidryukimods
 - https://www.facebook.com/groups/taskerandroid/?ref=share
 
-## Donate
+## Thanks for Donations
 - https://www.paypal.me/reiryuki
