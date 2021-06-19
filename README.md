@@ -25,3 +25,4 @@
 
 ## Download
 - Moved link here: https://www.pling.com/p/1532327/
+- My project xml collections that can be imported to your Tasker app: https://www.pling.com/p/1538840/
