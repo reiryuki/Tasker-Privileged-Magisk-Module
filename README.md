@@ -1,10 +1,10 @@
 # **Tasker Privileged**
 
 ## Descriptions
-- Fix some missing functionalities of [Tasker app](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm) due to restrictions in newer Android API versions.
+- Fixes some missing functionalities of [Tasker app](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm) due to restrictions in newer Android API versions.
 
 ## Requirements
-- Android Lollipop SDK 21 and up
+- Android 5 and up
 - Paid Tasker installed as user app
 - Magisk installed
 
@@ -13,16 +13,18 @@
 - Install this module via Magisk Manager only
 - Reboot
 
-## Attention!
-- No report except with full logcats
+## Bug Report
+- https://t.me/androidryukimodsdiscussions/2618
+- If you don't do above, issues will be closed immediately
 
 ## Channels
 - https://t.me/androidryukimods
 - https://www.facebook.com/groups/taskerandroid/?ref=share
 
 ## Thanks for Donations
+- https://t.me/androidryukimodsdiscussions/2619
 - https://www.paypal.me/reiryuki
 
 ## Download
-- Moved link here: https://www.pling.com/p/1532327/
+- Tap here: https://www.pling.com/p/1532327/
 - My project xml collections that can be imported to your Tasker app: https://www.pling.com/p/1538840/
