@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
-  <hidden-api-whitelisted-app package="net.dinglisch.android.taskerm"/>
-  <allow-in-power-save package="net.dinglisch.android.taskerm"/>
-  <allow-implicit-broadcast action="net.dinglisch.android.tasker.NOTORUM"/>
-  <allow-implicit-broadcast action="net.dinglisch.android.ipack.actions.QUERY_PACKS"/>
-  <allow-implicit-broadcast action="net.dinglisch.android.tasker.ACTION_TASK"/>
+    <hidden-api-whitelisted-app package="net.dinglisch.android.taskerm"/>
+    <allow-in-power-save package="net.dinglisch.android.taskerm"/>
+    <allow-implicit-broadcast action="net.dinglisch.android.tasker.NOTORUM"/>
+    <allow-implicit-broadcast action="net.dinglisch.android.ipack.actions.QUERY_PACKS"/>
+    <allow-implicit-broadcast action="net.dinglisch.android.tasker.ACTION_TASK"/>
 </config>
 
