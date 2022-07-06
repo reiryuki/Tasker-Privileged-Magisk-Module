@@ -19,7 +19,7 @@
         <permission name="android.permission.WRITE_APN_SETTINGS"/>
         <permission name="android.permission.SYSTEM_CAMERA"/>
         <permission name="android.permission.WRITE_MEDIA_STORAGE"/>
-        <!-- Only if not added yet in AndroidManifest.xml -->
+        <!-- Not added yet in AndroidManifest.xml -->
         <permission name="android.permission.ACCESS_MEDIA_LOCATION"/>
         <permission name="android.permission.MANAGE_MEDIA_PROJECTION"/>
         <permission name="android.permission.MANAGE_ONGOING_CALLS"/>
