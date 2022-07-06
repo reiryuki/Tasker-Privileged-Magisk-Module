@@ -1,5 +1,3 @@
-(
-
 MODPATH=${0%/*}
 API=`getprop ro.build.version.sdk`
 
@@ -34,7 +32,5 @@ appops set $PKG SYSTEM_ALERT_WINDOW allow
 appops set $PKG GET_USAGE_STATS allow
 appops set $PKG MANAGE_ONGOING_CALLS allow
 appops set $PKG PROJECT_MEDIA allow
-
-) 2>/dev/null
 
 
