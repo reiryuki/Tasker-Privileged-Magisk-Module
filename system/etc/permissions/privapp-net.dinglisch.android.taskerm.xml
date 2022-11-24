@@ -27,6 +27,7 @@
         <permission name="android.permission.CAMERA_OPEN_CLOSE_LISTENER"/>
         <permission name="android.permission.ACCESS_SURFACE_FLINGER"/>
         <permission name="android.permission.ROTATE_SURFACE_FLINGER"/>
+        <permission name="android.permission.INTERNAL_SYSTEM_WINDOW"/>
     </privapp-permissions>
 </permissions>
 
