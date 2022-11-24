@@ -30,5 +30,3 @@
         <permission name="android.permission.INTERNAL_SYSTEM_WINDOW"/>
     </privapp-permissions>
 </permissions>
-
-
