@@ -1,6 +1,6 @@
 id=TaskerPrivileged
 name=Tasker Privileged
-version=v2.10-beta.1
+version=v2.10
 versionCode=20
 author=Rei Ryuki the Fixer
 description=Fixes some missing functionalities of Tasker app due to restrictions in newer Android API versions.
