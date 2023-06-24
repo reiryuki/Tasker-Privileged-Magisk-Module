@@ -6,3 +6,4 @@
     <allow-implicit-broadcast action="net.dinglisch.android.ipack.actions.QUERY_PACKS"/>
     <allow-implicit-broadcast action="net.dinglisch.android.tasker.ACTION_TASK"/>
 </config>
+
