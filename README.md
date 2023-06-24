@@ -9,12 +9,13 @@
 ## Requirements
 - Android 5 and up
 - Paid Tasker app installed as user app
-- Magisk installed
+- Magisk or KernelSU installed
 
 ## Installation Guide & Download Link
 - Install paid Tasker app first at Play Store: https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm
-- Install this module https://www.pling.com/p/1532327/ via Magisk app only
+- Install this module https://www.pling.com/p/1532327/ via Magisk app or KernelSU app only
 - Reboot
+- If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (and your home launcher app also) (enable show system apps) and reboot after
 
 ## Tested on
 - Android 10 CrDroid ROM
@@ -23,6 +24,7 @@
 - Android 12.1 Nusantara ROM
 - Android 13 Nusantara ROM
 - Android 13 AOSP ROM
+- Android 13 CrDroid ROM
 
 ## Optionals & Troubleshootings
 - https://t.me/androidryukimodsdiscussions/60861

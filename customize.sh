@@ -1,43 +1,21 @@
 # boot mode
 if [ "$BOOTMODE" != true ]; then
-  abort "- Please flash via Magisk Manager only!"
+  abort "- Please flash via Magisk app only!"
 fi
 
 # space
-if [ "$BOOTMODE" == true ]; then
+ui_print " "
+
+# log
+if [ "$BOOTMODE" != true ]; then
+  FILE=/sdcard/$MODID\_recovery.log
+  ui_print "- Log will be saved at $FILE"
+  exec 2>$FILE
   ui_print " "
 fi
 
-# magisk
-if [ -d /sbin/.magisk ]; then
-  MAGISKTMP=/sbin/.magisk
-else
-  MAGISKTMP=`realpath /dev/*/.magisk`
-fi
-
-# path
-if [ "$BOOTMODE" == true ]; then
-  MIRROR=$MAGISKTMP/mirror
-else
-  MIRROR=
-fi
-SYSTEM=`realpath $MIRROR/system`
-PRODUCT=`realpath $MIRROR/product`
-VENDOR=`realpath $MIRROR/vendor`
-SYSTEM_EXT=`realpath $MIRROR/system_ext`
-if [ -d $MIRROR/odm ]; then
-  ODM=`realpath $MIRROR/odm`
-else
-  ODM=`realpath /odm`
-fi
-if [ -d $MIRROR/my_product ]; then
-  MY_PRODUCT=`realpath $MIRROR/my_product`
-else
-  MY_PRODUCT=`realpath /my_product`
-fi
-
-# optionals
-OPTIONALS=/sdcard/optionals.prop
+# run
+. $MODPATH/function.sh
 
 # info
 MODVER=`grep_prop version $MODPATH/module.prop`
@@ -45,8 +23,15 @@ MODVERCODE=`grep_prop versionCode $MODPATH/module.prop`
 ui_print " ID=$MODID"
 ui_print " Version=$MODVER"
 ui_print " VersionCode=$MODVERCODE"
-ui_print " MagiskVersion=$MAGISK_VER"
-ui_print " MagiskVersionCode=$MAGISK_VER_CODE"
+if [ "$KSU" == true ]; then
+  ui_print " KSUVersion=$KSU_VER"
+  ui_print " KSUVersionCode=$KSU_VER_CODE"
+  ui_print " KSUKernelVersionCode=$KSU_KERNEL_VER_CODE"
+  sed -i 's|#k||g' $MODPATH/post-fs-data.sh
+else
+  ui_print " MagiskVersion=$MAGISK_VER"
+  ui_print " MagiskVersionCode=$MAGISK_VER_CODE"
+fi
 ui_print " "
 
 # sdk
@@ -61,57 +46,49 @@ else
   ui_print " "
 fi
 
-# mount
-if [ "$BOOTMODE" != true ]; then
-  mount -o rw -t auto /dev/block/bootdevice/by-name/cust /vendor
-  mount -o rw -t auto /dev/block/bootdevice/by-name/vendor /vendor
-  mount -o rw -t auto /dev/block/bootdevice/by-name/persist /persist
-  mount -o rw -t auto /dev/block/bootdevice/by-name/metadata /metadata
+# optionals
+OPTIONALS=/sdcard/optionals.prop
+if [ ! -f $OPTIONALS ]; then
+  touch $OPTIONALS
 fi
 
-# sepolicy.rule
-FILE=$MODPATH/sepolicy.sh
-DES=$MODPATH/sepolicy.rule
-if [ -f $FILE ] && [ "`grep_prop sepolicy.sh $OPTIONALS`" != 1 ]; then
+# sepolicy
+FILE=$MODPATH/sepolicy.rule
+DES=$MODPATH/sepolicy.pfsd
+if [ "`grep_prop sepolicy.sh $OPTIONALS`" == 1 ]\
+&& [ -f $FILE ]; then
   mv -f $FILE $DES
-  sed -i 's/magiskpolicy --live "//g' $DES
-  sed -i 's/"//g' $DES
 fi
 
 # cleaning
 ui_print "- Cleaning..."
-rm -rf /metadata/magisk/$MODID
-rm -rf /mnt/vendor/persist/magisk/$MODID
-rm -rf /persist/magisk/$MODID
-rm -rf /data/unencrypted/magisk/$MODID
-rm -rf /cache/magisk/$MODID
+remove_sepolicy_rule
 ui_print " "
 
 # function
 permissive_2() {
-sed -i '1i\
-SELINUX=`getenforce`\
-if [ "$SELINUX" == Enforcing ]; then\
-  magiskpolicy --live "permissive *"\
-fi\' $MODPATH/post-fs-data.sh
+sed -i 's|#2||g' $MODPATH/post-fs-data.sh
 }
 permissive() {
-SELINUX=`getenforce`
-if [ "$SELINUX" == Enforcing ]; then
-  setenforce 0
-  SELINUX=`getenforce`
-  if [ "$SELINUX" == Enforcing ]; then
+FILE=/sys/fs/selinux/enforce
+SELINUX=`cat $FILE`
+if [ "$SELINUX" == 1 ]; then
+  if ! setenforce 0; then
+    echo 0 > $FILE
+  fi
+  SELINUX=`cat $FILE`
+  if [ "$SELINUX" == 1 ]; then
     ui_print "  Your device can't be turned to Permissive state."
     ui_print "  Using Magisk Permissive mode instead."
     permissive_2
   else
-    setenforce 1
-    sed -i '1i\
-SELINUX=`getenforce`\
-if [ "$SELINUX" == Enforcing ]; then\
-  setenforce 0\
-fi\' $MODPATH/post-fs-data.sh
+    if ! setenforce 1; then
+      echo 1 > $FILE
+    fi
+    sed -i 's|#1||g' $MODPATH/post-fs-data.sh
   fi
+else
+  sed -i 's|#1||g' $MODPATH/post-fs-data.sh
 fi
 }
 
@@ -131,28 +108,24 @@ fi
 # oat/odex
 APP=Tasker
 PKG=net.dinglisch.android.taskerm
-CURRENT=`pm list packages --show-versioncode | grep $PKG | sed -n -e "s/package:$PKG versionCode://p"`
+CURRENT=`pm list packages --show-versioncode | grep $PKG | sed "s/package:$PKG versionCode://"`
 NEW=5312
-DIR=/system/priv-app/$APP
-ui_print "- Current versionCode: $CURRENT"
-ui_print "  New versionCode: $NEW"
-ui_print " "
+DIR=`find /data/adb/modules/"$MODID"/system -type d -name "$APP"`
+ui_print "- Current app versionCode: $CURRENT"
+ui_print "  New app versionCode: $NEW"
 if [ "$CURRENT" == "$NEW" ]; then
-  if [ -d $DIR/oat ]; then
-    ui_print "- Copying oat..."
+  if [ -f $DIR/oat/$APP.odex ]; then
+    ui_print "  Copying oat..."
     cp -rf $DIR/oat $MODPATH/$DIR
-    ui_print " "
-  elif [ -d $DIR/odex ]; then
-    ui_print "- Copying odex..."
+  elif [ -f $DIR/odex/$APP.odex ]; then
+    ui_print "  Copying odex..."
     cp -rf $DIR/odex $MODPATH/$DIR
-    ui_print " "
   elif [ -f $DIR/$APP.odex ]; then
-    ui_print "- Copying odex..."
+    ui_print "  Copying odex..."
     cp -f $DIR/$APP.odex $MODPATH/$DIR
-    ui_print " "
   fi
 fi
-
+ui_print " "
 # power save
 FILE=$MODPATH/system/etc/sysconfig/*
 if [ "`grep_prop power.save $OPTIONALS`" == 1 ]; then
@@ -164,10 +137,9 @@ if [ "`grep_prop power.save $OPTIONALS`" == 1 ]; then
   done
   ui_print " "
 fi
-
 # install
-FILE=$MODPATH/system/priv-app/$APP/$APP.apk
-if [ "$CURRENT" -lt "$NEW" ] || [ ! $CURRENT ]; then
+FILE=`find $MODPATH/system -type f -name $APP.apk`
+if [ "$CURRENT" -lt "$NEW" ] || [ ! "$CURRENT" ]; then
   ui_print "- Installing Tasker as a user app and granting all"
   ui_print "  runtime permissions..."
   ui_print "  This will keep the app installed even you disable"
@@ -182,6 +154,13 @@ if [ "`grep_prop disable.proximity $OPTIONALS`" == 1 ]; then
   sed -i 's/#p//g' $MODPATH/system.prop
   ui_print " "
 fi
+
+
+
+
+
+
+
 
 
 
