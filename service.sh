@@ -1,9 +1,11 @@
 MODPATH=${0%/*}
-API=`getprop ro.build.version.sdk`
 
 # log
 exec 2>$MODPATH/debug.log
 set -x
+
+# var
+API=`getprop ro.build.version.sdk`
 
 # wait
 until [ "`getprop sys.boot_completed`" == "1" ]; do
@@ -45,9 +47,8 @@ fi
 appops set $PKG SYSTEM_ALERT_WINDOW allow
 appops set $PKG GET_USAGE_STATS allow
 appops set $PKG MANAGE_ONGOING_CALLS allow
-appops set $PKG PROJECT_MEDIA allow
 PKGOPS=`appops get $PKG`
-UID=`dumpsys package $PKG 2>/dev/null | grep -m 1 userId= | sed 's/    userId=//'`
+UID=`dumpsys package $PKG 2>/dev/null | grep -m 1 userId= | sed 's|    userId=||g'`
 if [ "$UID" -gt 9999 ]; then
   appops set --uid "$UID" LEGACY_STORAGE allow
   if [ "$API" -ge 29 ]; then

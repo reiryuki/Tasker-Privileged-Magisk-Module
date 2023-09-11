@@ -1,42 +1,20 @@
 # debug
-dontaudit system_server system_file file write
-allow     system_server system_file file write
+allow system_server system_file file write
 
 # context
 create { system_lib_file vendor_file vendor_configs_file }
-dontaudit { system_file system_lib_file vendor_file vendor_configs_file } labeledfs filesystem associate
-allow     { system_file system_lib_file vendor_file vendor_configs_file } labeledfs filesystem associate
-dontaudit init { system_file system_lib_file vendor_file vendor_configs_file } { dir file } relabelfrom
-allow     init { system_file system_lib_file vendor_file vendor_configs_file } { dir file } relabelfrom
+allow { system_file system_lib_file vendor_file vendor_configs_file } labeledfs filesystem associate
+allow init { system_file system_lib_file vendor_file vendor_configs_file } { dir file } relabelfrom
 
 # file
-dontaudit system_server { sdcardfs vfat fuse } file { read write getattr }
-allow     system_server { sdcardfs vfat fuse } file { read write getattr }
-dontaudit { system_app priv_app platform_app untrusted_app_29 untrusted_app_27 untrusted_app } { sysfs_leds vendor_file } file { read getattr }
-allow     { system_app priv_app platform_app untrusted_app_29 untrusted_app_27 untrusted_app } { sysfs_leds vendor_file } file { read getattr }
-dontaudit { system_app priv_app platform_app untrusted_app_29 untrusted_app_27 untrusted_app } apk_data_file file setattr
-allow     { system_app priv_app platform_app untrusted_app_29 untrusted_app_27 untrusted_app } apk_data_file file setattr 
-dontaudit magisk_client vendor_file file { read getattr }
-allow     magisk_client vendor_file file { read getattr }
+allow system_server { sdcardfs vfat fuse } file { read write getattr }
+allow { system_app priv_app platform_app untrusted_app_29 untrusted_app_27 untrusted_app } { sysfs_leds vendor_file } file { read getattr }
+allow { system_app priv_app platform_app untrusted_app_29 untrusted_app_27 untrusted_app } apk_data_file file setattr 
+allow magisk_client vendor_file file { read getattr }
 
 # dir
-dontaudit { system_app priv_app platform_app untrusted_app_29 untrusted_app_27 untrusted_app } { sysfs_leds sysfs rootfs } dir { read open }
-allow     { system_app priv_app platform_app untrusted_app_29 untrusted_app_27 untrusted_app } { sysfs_leds sysfs rootfs } dir { read open }
-dontaudit magisk_client { vendor_file system_data_file } dir read
-allow     magisk_client { vendor_file system_data_file } dir read
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+allow { system_app priv_app platform_app untrusted_app_29 untrusted_app_27 untrusted_app } { sysfs_leds sysfs rootfs } dir { read open }
+allow magisk_client { vendor_file system_data_file } dir read
+allow hal_wifi_default vendor_tombstone_data_file dir { search read open }
 
 
