@@ -19,6 +19,7 @@
         <permission name="android.permission.WRITE_APN_SETTINGS"/>
         <permission name="android.permission.SYSTEM_CAMERA"/>
         <permission name="android.permission.WRITE_MEDIA_STORAGE"/>
+        <permission name="android.permission.OVERRIDE_WIFI_CONFIG"/>
         <!-- Not added yet in AndroidManifest.xml -->
         <permission name="android.permission.ACCESS_MEDIA_LOCATION"/>
         <permission name="android.permission.MANAGE_MEDIA_PROJECTION"/>
