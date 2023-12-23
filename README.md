@@ -27,9 +27,9 @@
 - Android 13 Nusantara ROM, AOSP ROM, & CrDroid ROM
 
 ## Optionals & Troubleshootings
-- https://t.me/androidryukimodsdiscussions/60861
 - https://t.me/androidryukimodsdiscussions/55379
-- https://t.me/androidryukimodsdiscussions/29836
+- Global: https://t.me/androidryukimodsdiscussions/60861
+- Global: https://t.me/androidryukimodsdiscussions/29836
 
 ## Support & Bug Report
 - https://t.me/androidryukimodsdiscussions/2618

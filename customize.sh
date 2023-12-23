@@ -1,11 +1,27 @@
 # space
 ui_print " "
 
+# var
+UID=`id -u`
+
 # log
 if [ "$BOOTMODE" != true ]; then
-  FILE=/sdcard/$MODID\_recovery.log
+  FILE=/data/media/"$UID"/$MODID\_recovery.log
   ui_print "- Log will be saved at $FILE"
   exec 2>$FILE
+  ui_print " "
+fi
+
+# optionals
+OPTIONALS=/data/media/"$UID"/optionals.prop
+if [ ! -f $OPTIONALS ]; then
+  touch $OPTIONALS
+fi
+
+# debug
+if [ "`grep_prop debug.log $OPTIONALS`" == 1 ]; then
+  ui_print "- The install log will contain detailed information"
+  set -x
   ui_print " "
 fi
 
@@ -39,12 +55,6 @@ if [ "$API" -lt $NUM ]; then
 else
   ui_print "- SDK $API"
   ui_print " "
-fi
-
-# optionals
-OPTIONALS=/sdcard/optionals.prop
-if [ ! -f $OPTIONALS ]; then
-  touch $OPTIONALS
 fi
 
 # sepolicy
@@ -153,14 +163,6 @@ if [ "`grep_prop power.save $OPTIONALS`" == 1 ]; then
   done
   ui_print " "
 fi
-
-# sensor
-if [ "`grep_prop disable.proximity $OPTIONALS`" == 1 ]; then
-  ui_print "- Proximity sensor will be disabled"
-  sed -i 's|#p||g' $MODPATH/system.prop
-  ui_print " "
-fi
-
 
 
 
