@@ -8,9 +8,26 @@ set -x
 API=`getprop ro.build.version.sdk`
 
 # wait
-until [ "`getprop sys.boot_completed`" == "1" ]; do
+until [ "`getprop sys.boot_completed`" == 1 ]; do
   sleep 10
 done
+
+# list
+PKGS="`cat $MODPATH/package.txt`
+       net.dinglisch.android.taskerm:playcore_missing_splits_activity"
+for PKG in $PKGS; do
+  magisk --denylist rm $PKG 2>/dev/null
+  magisk --sulist add $PKG 2>/dev/null
+done
+if magisk magiskhide sulist; then
+  for PKG in $PKGS; do
+    magisk magiskhide add $PKG
+  done
+else
+  for PKG in $PKGS; do
+    magisk magiskhide rm $PKG
+  done
+fi
 
 # grant
 PKG=net.dinglisch.android.taskerm
@@ -44,15 +61,23 @@ fi
 if [ "$API" -ge 31 ]; then
   appops set $PKG MANAGE_MEDIA allow
 fi
+if [ "$API" -ge 34 ]; then
+  appops set $PKG READ_MEDIA_VISUAL_USER_SELECTED allow
+fi
 appops set $PKG SYSTEM_ALERT_WINDOW allow
 appops set $PKG GET_USAGE_STATS allow
 appops set $PKG MANAGE_ONGOING_CALLS allow
 PKGOPS=`appops get $PKG`
-UID=`dumpsys package $PKG 2>/dev/null | grep -m 1 userId= | sed 's|    userId=||g'`
+UID=`dumpsys package $PKG 2>/dev/null | grep -m 1 Id= | sed -e 's|    userId=||g' -e 's|    appId=||g'`
 if [ "$UID" ] && [ "$UID" -gt 9999 ]; then
   appops set --uid "$UID" LEGACY_STORAGE allow
+  appops set --uid "$UID" READ_EXTERNAL_STORAGE allow
+  appops set --uid "$UID" WRITE_EXTERNAL_STORAGE allow
   if [ "$API" -ge 29 ]; then
     appops set --uid "$UID" ACCESS_MEDIA_LOCATION allow
+  fi
+  if [ "$API" -ge 34 ]; then
+    appops set --uid "$UID" READ_MEDIA_VISUAL_USER_SELECTED allow
   fi
   UIDOPS=`appops get --uid "$UID"`
 fi
