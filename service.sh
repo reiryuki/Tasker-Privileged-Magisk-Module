@@ -66,6 +66,7 @@ if [ "$API" -ge 34 ]; then
 fi
 appops set $PKG SYSTEM_ALERT_WINDOW allow
 appops set $PKG GET_USAGE_STATS allow
+appops set $PKG TURN_SCREEN_ON allow
 appops set $PKG MANAGE_ONGOING_CALLS allow
 PKGOPS=`appops get $PKG`
 UID=`dumpsys package $PKG 2>/dev/null | grep -m 1 Id= | sed -e 's|    userId=||g' -e 's|    appId=||g'`

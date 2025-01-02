@@ -10,6 +10,7 @@ allow init { system_file system_lib_file vendor_file vendor_configs_file } { dir
 allow system_server { sdcardfs vfat fuse } file { read write getattr }
 allow { system_app priv_app platform_app untrusted_app_29 untrusted_app_27 untrusted_app } { sysfs_leds vendor_file } file { read getattr }
 allow { system_app priv_app platform_app untrusted_app_29 untrusted_app_27 untrusted_app } apk_data_file file setattr 
+allow { system_app priv_app platform_app untrusted_app_29 untrusted_app_27 untrusted_app } proc_filesystems file read
 allow magisk_client vendor_file file { read getattr }
 
 # dir
