@@ -16,6 +16,7 @@
         <permission name="android.permission.SET_PROCESS_LIMIT"/>
         <permission name="android.permission.INTERACT_ACROSS_USERS"/>
         <permission name="android.permission.BLUETOOTH_PRIVILEGED"/>
+        <!-- Not added yet in AndroidManifest.xml -->
         <permission name="android.permission.WRITE_APN_SETTINGS"/>
         <permission name="android.permission.SYSTEM_CAMERA"/>
         <permission name="android.permission.WRITE_MEDIA_STORAGE"/>
@@ -25,18 +26,16 @@
         <permission name="android.permission.CAPTURE_MEDIA_OUTPUT"/>
         <permission name="android.permission.CAPTURE_AUDIO_HOTWORD"/>
         <permission name="android.permission.TURN_SCREEN_ON"/>
-        <!-- Not added yet in AndroidManifest.xml -->
         <permission name="android.permission.READ_DEVICE_CONFIG"/>
         <permission name="android.permission.FOREGROUND_SERVICE_MICROPHONE"/>
         <permission name="android.permission.ACCESS_MEDIA_LOCATION"/>
         <permission name="android.permission.MANAGE_MEDIA_PROJECTION"/>
         <permission name="android.permission.MANAGE_ONGOING_CALLS"/>
-        <permission name="android.permission.HIGH_SAMPLING_RATE_SENSORS"/>
         <permission name="android.permission.CAMERA_OPEN_CLOSE_LISTENER"/>
         <permission name="android.permission.ACCESS_SURFACE_FLINGER"/>
         <permission name="android.permission.ROTATE_SURFACE_FLINGER"/>
         <permission name="android.permission.INTERNAL_SYSTEM_WINDOW"/>
-        <!--permission name="android.permission.RECEIVE_SENSITIVE_NOTIFICATIONS"/-->
+        <permission name="android.permission.RECEIVE_SENSITIVE_NOTIFICATIONS"/>
     </privapp-permissions>
 </permissions>
 
