@@ -64,10 +64,14 @@ fi
 if [ "$API" -ge 34 ]; then
   appops set $PKG READ_MEDIA_VISUAL_USER_SELECTED allow
 fi
+appops set $PKG TAKE_AUDIO_FOCUS allow
 appops set $PKG SYSTEM_ALERT_WINDOW allow
 appops set $PKG GET_USAGE_STATS allow
 appops set $PKG TURN_SCREEN_ON allow
 appops set $PKG MANAGE_ONGOING_CALLS allow
+if [ "$API" -ge 35 ]; then
+  appops set $PKG RECEIVE_SENSITIVE_NOTIFICATIONS allow
+fi
 PKGOPS=`appops get $PKG`
 UID=`dumpsys package $PKG 2>/dev/null | grep -m 1 Id= | sed -e 's|    userId=||g' -e 's|    appId=||g'`
 if [ "$UID" ] && [ "$UID" -gt 9999 ]; then

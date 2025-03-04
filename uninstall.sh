@@ -5,7 +5,7 @@ UID=`id -u`
 [ ! "$UID" ] && UID=0
 
 # log
-exec 2>/data/media/"$UID"/$MODID\_uninstall.log
+exec 2>/data/adb/$MODID\_uninstall.log
 set -x
 
 # run

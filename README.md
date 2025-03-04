@@ -21,13 +21,14 @@
 - If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (and your home launcher app also) (enable show system apps) and reboot afterwards
 - If you are using SUList, you need to allow list manually your home launcher app (enable show system apps) and reboot afterwards
 
-## Optionals & Troubleshootings
-- https://t.me/androidryukimodsdiscussions/55379
+## Optionals
 - Global: https://t.me/ryukinotes/35
+
+## Troubleshootings
 - Global: https://t.me/ryukinotes/34
 
 ## Support & Bug Report
-- https://t.me/androidryukimodsdiscussions/2618
+- https://t.me/ryukinotes/54
 - If you don't do above, issues will be closed immediately
 
 ## Channel
