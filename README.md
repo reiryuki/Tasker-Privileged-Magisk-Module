@@ -2,6 +2,7 @@
 
 ## Descriptions
 - Fixes some unfunctional tasks and profiles in Tasker app due to restrictions in newer Android API versions like "Set Light" task, "Settings Panel" task, "Connect to WiFi" task, "Application Services" profile, and any other else.
+- Access some permissions through priv-app whitelist permissions instead of root permission so it can work faster.
 - What app is this? Tap here: https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm. Tap the "About this app" there.
 
 ## Sources
