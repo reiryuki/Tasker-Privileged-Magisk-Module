@@ -43,6 +43,6 @@
 - https://t.me/ryukinotes/25
 
 ## Other
-- My project xml collections that can be imported to your Tasker app: https://www.pling.com/p/1538840/
+- My xml projects/tasks that can be imported to your Tasker app: https://www.pling.com/p/1538840/
 
 
