@@ -33,6 +33,7 @@
         <permission name="android.permission.CAMERA" fixed="false"/>
         <permission name="android.permission.ACTIVITY_RECOGNITION" fixed="false"/>
         <permission name="android.permission.RECORD_AUDIO" fixed="false"/>
+        <permission name="android.permission.health.READ_HEART_RATE" fixed="false"/>
         <permission name="com.termux.permission.RUN_COMMAND" fixed="false"/>
     </exception>
 </exceptions>
