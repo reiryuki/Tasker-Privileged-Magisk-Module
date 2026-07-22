@@ -27,7 +27,6 @@
         <permission name="android.permission.CAPTURE_AUDIO_HOTWORD"/>
         <permission name="android.permission.TURN_SCREEN_ON"/>
         <permission name="android.permission.READ_DEVICE_CONFIG"/>
-        <permission name="android.permission.FOREGROUND_SERVICE_MICROPHONE"/>
         <permission name="android.permission.ACCESS_MEDIA_LOCATION"/>
         <permission name="android.permission.MANAGE_MEDIA_PROJECTION"/>
         <permission name="android.permission.MANAGE_ONGOING_CALLS"/>
