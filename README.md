@@ -16,6 +16,7 @@ v2.17
 - Update libmagiskpolicy.so from Magisk (stable) 30.7 (30700)
 - Resets module folders/files permissions at post-fs-data
 - Move _uninstall.log to /data/adb/logs/
+- Prepare /storage/emulated/"$UID"/Android/data/$PKG/ directories
 
 v2.16
 - Update Tasker.apk v6.4.13
@@ -75,8 +76,8 @@ v2.8
 - If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings and install https://github.com/KernelSU-Modules-Repo/meta-overlayfs or https://github.com/KernelSU-Modules-Repo/magic_mount_rs or https://github.com/KernelSU-Modules-Repo/hybrid_mount or https://github.com/maxsteeel/nomount first depending on ROM compatibility
 - Install paid Tasker app first at Play Store: https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm
 - Download the right module according to your device architecture and Android version:
-  - Minimum SDK 27 arm64-v8a or armeabi-v7a: https://bicolink.com/0W1
-  - Minimum SDK 21: https://bicolink.com/4K4h6
+  - Minimum SDK 27 arm64-v8a or armeabi-v7a: https://github.com/reiryuki/Tasker-Privileged-Magisk-Module
+  - Minimum SDK 21: https://github.com/reiryuki/Tasker-Privileged-Magisk-Module
 - Install the module via Magisk/Kitsune Mask/KernelSU/Apatch app or Recovery if Magisk/Kitsune Mask installed
 - Reboot
 - If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (and your home launcher app also) (enable show system apps) and reboot afterwards
